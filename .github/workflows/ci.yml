@@ -1,44 +1,13 @@
-name: 'pluginsdev'
-## extra comments
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-    #tags: 
-    #  - 'v*'
-  pull_request:
-    branches: [ master ]
-    #tags:
-    #  - 'v*'
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-
 name: CI
 
 on: [push]
+
+jobs:
   build-test:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - uses: php-actions/composer@v5 # or alternative dependency management
     - uses: php-actions/phpunit@v3
-
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1      
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
-      with:
-        ftp-server: ${{secrets.DEV_PLUGINS_URL}}
-        ftp-username: ${{secrets.DEV_PLUGINS_USER}}
-        ftp-password: ${{secrets.DEV_PLUGINS_PASS}}
-        git-ftp-args: --insecure
-  on:
-  pull_request:
-    # Sequence of patterns matched against refs/heads
-    branches:    
-      - main
+    # ... then your own project steps ...
