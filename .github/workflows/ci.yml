@@ -1,12 +1,13 @@
-name: CI
+- name: Setup PHP with tools
+## extra comments
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
 
-on: [push]
-
-jobs:
-  build-test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: php-actions/phpunit@v3
-    # ... then your own project steps ...
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+  uses: shivammathur/setup-php@v2
+  with:
+    php-version: '8.1'
+    tools: php-cs-fixer, phpunit
