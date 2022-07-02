@@ -14,11 +14,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: PHPCS Code Review
-        # You may pin to the exact commit or the version.
-        # uses: rtCamp/action-phpcs-code-review@606311bf3bbb47cd4eda7c2de64360761114eb7e
-        uses: rtCamp/action-phpcs-code-review@v2.1.0
+   - name: PHP Code Style (phpcs)
+      # You may pin to the exact commit or the version.
+      # uses: chindit/actions-phpcs@ccda708ed581ebe13a66497cc47c07b8346af3b3
+      uses: chindit/actions-phpcs@1.0.1
+      with:
+        # Folder to check code style
+        dir: # optional, default is .
   
