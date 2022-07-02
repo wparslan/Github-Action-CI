@@ -1,6 +1,8 @@
-name: CI
+name: workflow-test
 
-on: [push]
+on: 
+  push:
+    branches: [main]
 
 jobs:
   build-test:
@@ -13,5 +15,3 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: php-actions/phpunit@v3
-    - uses: shivammathur/setup-php@v2
-    # ... then your own project steps ...
